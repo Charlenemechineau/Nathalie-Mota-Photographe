@@ -1,3 +1,174 @@
 /*
 Theme Name: Nathalie-Mota-photographe
+Author: Mechineau Charlene
+Description: Thème personnalisé pour le site de Nathalie Mota
+version: 1.0
+Tags: photo, Photographe Event Project
 */
+
+/*poppins Font */
+
+@font-face {
+    font-family: 'Poppins';
+    src: url('fonts/Poppins/Poppins-Regular.ttf') format('truetype'),
+         url('fonts/Poppins/Poppins-Regular.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Poppins';
+    src: url('fonts/Poppins/Poppins-Thin.ttf') format('truetype'),
+         url('fonts/Poppins/Poppins-Thin.woff2') format('woff2');
+    font-weight: thin;
+    font-style: normal;
+}
+
+/* Space Mono Font */
+
+@font-face {
+    font-family: 'Space_Mono';
+    src: url('fonts/Space_Mono/SpaceMono-BoldItalic.ttf') format('truetype'),
+         url('fonts/Space_Mono/SpaceMono-BoldItalic.woff2') format('woff2');
+    font-weight: bold;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Space_Mono';
+    src: url('fonts/Space_Mono/SpaceMono-Italic.ttf') format('truetype'),
+         url('fonts/Space_Mono/SpaceMono-Italic.woff2') format('woff2');
+    font-weight: normal;
+    font-style: italic;     
+}
+
+@font-face {
+    font-family: 'Space_Mono';
+    src: url('fonts/Space_Mono/SpaceMono-Regular.ttf') format('truetype'),
+         url('fonts/Space_Mono/SpaceMono-Regular.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+body {
+    background-color: #FFFFFF;
+    font-family: 'Space_Mono';
+    max-width: 1540px;
+    margin: 0 auto;
+}
+
+/* logo */
+.site-logo img{
+    width: 216px;
+    height: 14px;
+}
+
+.site-logo {
+    margin-right: 20px; 
+    margin-left: 16px;
+}
+
+/* barre de navigation header*/
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 125px;
+}
+  
+.main-menu li {
+    margin-left: 50px;
+    
+}
+
+.main-menu {
+    display: flex;
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    font-style: none;
+    color: black;
+    font-family: 'Space_Mono';
+    font-style: normal;
+}
+
+/* footer */
+.site-footer {
+    padding: 10px; 
+    border-top: 1px solid black; 
+}
+
+.footer-navigation {
+    display: flex;
+    justify-content: center; 
+}
+
+.footer-menu {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.footer-menu li {
+    margin: 0 40px; 
+}
+
+/* style du formulaire de contact */
+
+.wpcf7-form.init, 
+.wpcf7-form.invalid, 
+.wpcf7-form.sent {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#wpcf7-f56-o1 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+#wpcf7-f56-o1 p {
+    font-family: 'Poppins';
+    color: #313144;
+    font-size: 12px;
+    font-style: normal;
+    margin: 7px;
+}
+
+.wpcf7-form-control.wpcf7-text.wpcf7-validates-as-required {
+    border-radius: 7px;
+    height: 40px;
+    width: 263px;
+    border: 2px solid #B8BBC2;
+}
+
+.wpcf7-form-control.wpcf7-textarea {
+    border-radius: 7px;
+    height: 210px;
+    width: 263px;
+    border: 2px solid #B8BBC2;
+}
+
+.wpcf7-form-control.has-spinner.wpcf7-submit {
+    width: 270px;
+    height: 50px;
+    border: none;
+    padding: 0;
+    font-family: 'Space_Mono';
+    font-style: normal;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.wpcf7-response-output {
+    margin-top: -20px;
+}
