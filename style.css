@@ -10,16 +10,16 @@ Tags: photo, Photographe Event Project
 
 @font-face {
     font-family: 'Poppins';
-    src: url('fonts/Poppins/Poppins-Regular.ttf') format('truetype'),
-         url('fonts/Poppins/Poppins-Regular.woff2') format('woff2');
+    src: url('assets/fonts/Poppins/Poppins-Regular.ttf') format('truetype'),
+         url('assets/fonts/Poppins/Poppins-Regular.woff2') format('woff2');
     font-weight: normal;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'Poppins';
-    src: url('fonts/Poppins/Poppins-Thin.ttf') format('truetype'),
-         url('fonts/Poppins/Poppins-Thin.woff2') format('woff2');
+    src: url('assets/fonts/Poppins/Poppins-Thin.ttf') format('truetype'),
+         url('assets/fonts/Poppins/Poppins-Thin.woff2') format('woff2');
     font-weight: thin;
     font-style: normal;
 }
@@ -28,24 +28,24 @@ Tags: photo, Photographe Event Project
 
 @font-face {
     font-family: 'Space_Mono';
-    src: url('fonts/Space_Mono/SpaceMono-BoldItalic.ttf') format('truetype'),
-         url('fonts/Space_Mono/SpaceMono-BoldItalic.woff2') format('woff2');
+    src: url('assets/fonts/Space_Mono/SpaceMono-BoldItalic.ttf') format('truetype'),
+         url('assets/fonts/Space_Mono/SpaceMono-BoldItalic.woff2') format('woff2');
     font-weight: bold;
     font-style: italic;
 }
 
 @font-face {
     font-family: 'Space_Mono';
-    src: url('fonts/Space_Mono/SpaceMono-Italic.ttf') format('truetype'),
-         url('fonts/Space_Mono/SpaceMono-Italic.woff2') format('woff2');
+    src: url('assets/fonts/Space_Mono/SpaceMono-Italic.ttf') format('truetype'),
+         url('assets/fonts/Space_Mono/SpaceMono-Italic.woff2') format('woff2');
     font-weight: normal;
     font-style: italic;     
 }
 
 @font-face {
     font-family: 'Space_Mono';
-    src: url('fonts/Space_Mono/SpaceMono-Regular.ttf') format('truetype'),
-         url('fonts/Space_Mono/SpaceMono-Regular.woff2') format('woff2');
+    src: url('assets/fonts/Space_Mono/SpaceMono-Regular.ttf') format('truetype'),
+         url('assets/fonts/Space_Mono/SpaceMono-Regular.woff2') format('woff2');
     font-weight: normal;
     font-style: normal;
 }
@@ -53,11 +53,10 @@ Tags: photo, Photographe Event Project
 
 body {
     background-color: #FFFFFF;
-    font-family: 'Space_Mono';
+    font-family: 'Space_Mono'!important;
     max-width: 1540px;
     margin: 0 auto;
 }
-
 /* logo */
 .site-logo img{
     width: 216px;
@@ -76,7 +75,7 @@ body {
     justify-content: space-between;
     margin: 0 125px;
 }
-  
+   
 .main-menu li {
     margin-left: 50px;
     
@@ -117,6 +116,93 @@ a {
     margin: 0 40px; 
 }
 
+/* Modal de contact */
+
+.modal-btn {
+    padding: 10px 14px;
+    font-size: 18px;
+    margin: 100px auto;
+    display: block;
+    min-width: 150px;
+    cursor: pointer;
+}
+
+.modal-container {
+    /*display: none;*/
+    visibility: hidden;
+    position: fixed;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    transition: visibility 0.6s;      /* animation fermeture de la modal */
+}
+
+.modal-container.active {
+    /*display: block;*/
+    visibility: visible;
+    transition: visibility 0.4s;      /* animation ouverture de la modal */
+}
+
+.overlay {
+    opacity: 0;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: #616161d3;
+    transition: opacity 0.4s 0.2s ease-out;   /* délai de disparition overlay de 0,2s*/ 
+}
+
+.modal-container.active .overlay {
+    opacity: 1;
+    transition: opacity 0.4s ease-out;    /* apparition direct de l'overlay à l'ouverture de la modal */
+}
+
+.modal {
+    opacity: 0;
+    width: 95%;
+    max-width: 500px;
+    min-width: 300px;
+    height: 670px;
+    border: 5px solid black;
+    background: #fff;
+    border-radius: 5px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    overflow-y: auto;
+    transform: translate(-50%, calc(-50% - 50px));
+    transition: opacity 0.4s ease-out, transform 0.4s ease-out;
+}
+
+.modal-container.active .modal {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+    transition: opacity 0.4s 0.2s ease-out, transform 0.4s 0.2s ease-out;     /* apparition de la modal après l'overlay à l'ouverture */
+}
+
+.close-modal {
+    padding: 8px 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    background: #ff365e;
+    color: #fff;
+}
+
+.modal img {
+    height: 84px;
+    width: 500px;
+}
+
+.modal h1 {
+    margin-top: 8px;
+    margin-bottom: 0;
+}
+
 /* style du formulaire de contact */
 
 .wpcf7-form.init, 
@@ -128,16 +214,16 @@ a {
     align-items: center;
 }
 
-#wpcf7-f56-o1 {
+#wpcf7-f28-o1 {
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
 
-#wpcf7-f56-o1 p {
+#wpcf7-f28-o1 p {
     font-family: 'Poppins';
-    color: #313144;
+    color: black;
     font-size: 12px;
     font-style: normal;
     margin: 7px;
