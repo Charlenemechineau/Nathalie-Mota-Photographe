@@ -4,6 +4,7 @@
     <meta charset="<?php bloginfo('charset'); ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <?php wp_head(); ?>
+    
 </head>
 
 <body <?php body_class(); ?>>
@@ -22,6 +23,12 @@
 
             <!-- Navigation du site -->
             <nav class="site-navigation">
+
+            <button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false">
+                    <div class="burger">
+                        <span class="line"></span>
+                    </div>
+                </button>
                 
                 <!-- Liste de navigation principale -->
                 <ul class="menu">

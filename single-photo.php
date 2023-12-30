@@ -17,7 +17,7 @@
                 <div class="ref">
                     <div class="post-reference">
                         <?php
-                        // Récupère et affiche la référence de la photo
+                        // Récupère et affiche la référence de la photo//
                         $reference = get_field('ref');
                         if ($reference) {
                             echo 'Référence : ' . $reference;
@@ -93,97 +93,98 @@
                 <!-- Bouton de contact -->
                 <a class="contact-button" href="#">Contact</a>
             </div>
-
+            
+            <!-- partie photo mignature -->
             <div class="photo-navigation">
                 <?php
-                // Récupère les photos précédente et suivante
+                // Récupère les photos précédente et suivante//
                 $prev_post = get_previous_post();
                 $next_post = get_next_post();
                 ?>
 
-                <div class="arrow-left-thumbnail">
-                    <!-- Affiche la photo précédente -->
-                    <?php if (!empty($prev_post)) : ?>
-                        <a href="<?php echo esc_url(get_permalink($prev_post->ID)); ?>" class="custom-prev-link"><img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/arrow-left.png" class="arrow" data-direction="previous" alt="Previous"></a>
+                <?php if (!empty($prev_post)) : ?>
+                    <!-- Lien pour la photo précédente -->
+                    <a href="<?php echo esc_url(get_permalink($prev_post->ID)); ?>" class="arrow-thumbnail custom-prev-link">
+                        <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/arrow-left.png" class="arrow" data-direction="previous" alt="Previous">
                         <?php echo get_the_post_thumbnail($prev_post->ID, 'thumbnail', array('class' => 'mini-thumbnail')); ?>
-                    <?php endif; ?>
-                </div>
+                    </a>
+                <?php endif; ?>
 
-                <div class="arrow-right-thumbnail">
-                    <!-- Affiche la photo suivante -->
-                    <?php if (!empty($next_post)) : ?>
-                        <a href="<?php echo esc_url(get_permalink($next_post->ID)); ?>" class="custom-next-link"><img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/arrow-right.png" class="arrow" data-direction="next" alt="Next"></a>
+                <?php if (!empty($next_post)) : ?>
+                    <!-- Lien pour la photo suivante -->
+                    <a href="<?php echo esc_url(get_permalink($next_post->ID)); ?>" class="arrow-thumbnail custom-next-link">
+                        <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/arrow-right.png" class="arrow" data-direction="next" alt="Next">
                         <?php echo get_the_post_thumbnail($next_post->ID, 'thumbnail', array('class' => 'mini-thumbnail')); ?>
-                    <?php endif; ?>
-                </div>
-                
+                    </a>
+                <?php endif; ?>
+            </div>
+        </div>    
+
+        <!-- Troisième section avec les photos apparentées -->
+        <div class="third-section double-photos">
+            <!-- Titre pour la section des photos apparentées -->
+            <div class="titre">
+                <p>VOUS AIMEREZ AUSSI</p>
+            </div>
+            <!-- Conteneur pour les miniatures des photos apparentées -->
+            <div class="thumbnail-container thumbnail-single">
+
+                <?php
+                // Récupère les termes (catégories) de l'article en cours//
+                $terms = get_the_terms(get_the_ID(), 'categorie');
+
+                // Vérifie si des termes ont été récupérés et qu'il n'y a pas d'erreur//
+                if ($terms && !is_wp_error($terms) && is_array($terms) && !empty($terms)) {
+                    // Utilise le premier terme pour filtrer les photos apparentées//
+                    $first_category = $terms[0]->slug;
+                } else {
+                    // Si aucune catégorie n'est trouvée, utilise une catégorie par défaut//
+                    $first_category = 'categorie-par-defaut';
+                }
+
+                // Arguments pour la requête des photos apparentées//
+                $args = array(
+                    'post_type' => 'photo',
+                    'post__not_in' => array(get_the_ID()), // Exclut la photo actuelle de la liste//
+                    'posts_per_page' => 2, // Limite le nombre de photos à afficher à 2//
+                    'tax_query' => array(
+                        array(
+                            'taxonomy' => 'categorie',
+                            'field'    => 'slug',
+                            'terms'    => $first_category,
+                        ),
+                    ),
+                );
+
+                // Initialise la requête WP_Query//
+                $query = new WP_Query($args);
+
+                // Stocke la requête pour une utilisation ultérieure si nécessaire//
+                global $query_lightbox;
+                $query_lightbox = $query;
+                ?>
+
+                <?php
+                // Boucle pour afficher les photos apparentées
+                while ($query->have_posts()) : $query->the_post(); ?>
+                    <div class="thumbnail">
+                        <?php
+                        // Utilise le modèle de bloc photo pour afficher chaque miniature
+                        get_template_part('templates_parts/photo_block');
+                        ?>
+                    </div>
+                <?php endwhile; ?>
+            </div>
+
+            <!-- Bouton pour voir toutes les photos -->
+            <div class="all-photos">
+                <a href="<?php echo esc_url(home_url('/')); ?>" class="all-photos-button">Toutes les photos</a>
             </div>
         </div>
-    <!-- Titre pour la section des photos apparentées -->
-<p>VOUS AIMEREZ AUSSI</p>
-
-<!-- Troisième section avec les photos apparentées -->
-<div class="third-section double-photos">
-
-    <!-- Conteneur pour les miniatures des photos apparentées -->
-    <div class="thumbnail-container">
-
-        <?php
-        // Récupère les termes (catégories) de l'article en cours
-        $terms = get_the_terms(get_the_ID(), 'categorie');
-
-        // Vérifie si des termes ont été récupérés et qu'il n'y a pas d'erreur
-        if ($terms && !is_wp_error($terms) && is_array($terms) && !empty($terms)) {
-            // Utilise le premier terme pour filtrer les photos apparentées
-            $first_category = $terms[0]->slug;
-        } else {
-            // Si aucune catégorie n'est trouvée, utilise une catégorie par défaut
-            $first_category = 'categorie-par-defaut';
-        }
-
-        // Arguments pour la requête des photos apparentées
-        $args = array(
-            'post_type' => 'photo',
-            'post__not_in' => array(get_the_ID()), // Exclut la photo actuelle de la liste
-            'posts_per_page' => 2, // Limite le nombre de photos à afficher à 2
-            'tax_query' => array(
-                array(
-                    'taxonomy' => 'categorie',
-                    'field'    => 'slug',
-                    'terms'    => $first_category,
-                ),
-            ),
-        );
-
-        // Initialise la requête WP_Query
-        $query = new WP_Query($args);
-
-        // Stocke la requête pour une utilisation ultérieure si nécessaire
-        global $query_lightbox;
-        $query_lightbox = $query;
-        ?>
-
-        <?php
-        // Boucle WordPress pour afficher les photos apparentées
-        while ($query->have_posts()) : $query->the_post(); ?>
-            <div class="thumbnail">
-                <?php
-                // Utilise le modèle de bloc photo pour afficher chaque miniature
-                get_template_part('templates_parts/photo_block');
-                ?>
-            </div>
-        <?php endwhile; ?>
-    </div>
-
-    <!-- Bouton pour voir toutes les photos -->
-    <div class="all-photos">
-        <a href="<?php echo esc_url(home_url('/')); ?>" class="all-photos-button">Toutes les photos</a>
-    </div>
-</div>
-<!-- Fin de la boucle WordPress -->
+<!-- Fin de la boucle  -->
 
 <?php
-// Fin de la structure WordPress
+// Fin de la structure //
 endwhile;
 else:
 ?>
