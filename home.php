@@ -52,7 +52,7 @@ $query_lightbox = $query;
         <div class="filters">
 
             <?php
-            // Récupérer les catégories de la taxonomie 'photo-categories'
+            // Récupérer les catégories de la taxonomie 'photo-categories'//
             $photo_categories = get_terms(array(
                 'taxonomy' => 'categorie',
                 'hide_empty' => true,

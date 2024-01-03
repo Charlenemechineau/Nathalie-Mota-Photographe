@@ -51,23 +51,25 @@ body {
     margin: auto;
 }
 
-/* header */
+/*********** header **********/
 
 .site-header{
     padding: 5px;
 }
-/* logo */
+
+/************ logo ***********/
 .site-logo img{
     width: 216px;
     height: 14px;
 }
 
+/* ajout de marge pour le placement du logo */
 .site-logo {
     margin-right: 20px; 
     margin-left: 16px;
 }
 
-/* barre de navigation header*/
+/*********** barre de navigation header ***********/
 .container {
     display: flex;
     align-items: center;
@@ -94,7 +96,7 @@ a {
     font-style: normal;
 }
 
-/* footer */
+/*********** footer ***********/
 .site-footer {
     padding: 10px; 
     border-top: 1px solid black; 
@@ -116,7 +118,7 @@ a {
     margin: 0 40px; 
 }
 
-/* Modal de contact */
+/*********** Modal de contact ***********/
 
 .modal-btn {
     padding: 10px 14px;
@@ -200,7 +202,7 @@ a {
     margin-bottom: 0;
 }
 
-/* style du formulaire de contact */
+/*********** style du formulaire de contact ************/
 
 .wpcf7-form.init, 
 .wpcf7-form.invalid, 
@@ -216,7 +218,6 @@ a {
     align-items: center;
     justify-content: center;
 }
-
 
 #wpcf7-f28-o1 p {
     font-family: 'Poppins';
@@ -263,7 +264,7 @@ a {
     margin-top: -20px;
 }
 
-/* création du post CPT */
+/*********** création du post CPT ***********/
 
 
 .single-post-container {
@@ -291,21 +292,22 @@ a {
     justify-content: flex-end;
 }
 
+/*titre de la publication */
 .post-title {
     font-family: 'Space_Mono';
     font-style: italic; 
     font-weight: 500;
-    text-transform: uppercase;
+    text-transform: uppercase; /* Transforme le texte en lettres majuscules */
     font-size: 66px;
 }
 
 .line-break-title {
     line-height: 0.9; 
-  }
+}
   
-
+/* image miniature de la publication */
 .post-thumbnail img {
-    object-fit: cover;
+    object-fit: cover; /* permet le controle des dimension et de la position des images dans le conteneur */
     width: 457px;
     height: 645px;
 }
@@ -328,10 +330,10 @@ a {
     display: flex;
     flex-direction: column;
     gap: 20px;
-    text-transform: uppercase;
+    text-transform: uppercase; /* Transforme le texte en lettres majuscules */
 }
 
-/* CTA + navigation des photos */
+/*********** CTA + navigation des photos ***********/
 
 .second-section {
     display: flex;
@@ -358,18 +360,18 @@ a {
     height: 50px;
     border-radius: 2px;
     background-color: #D8D8D8;
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease; /* Animation de transition au survol */
 }
 
 .contact-button:hover {
     background-color: black;
     font-weight: bold;
-    transform: scale(1.1);
+    transform: scale(1.1); /* Effet de mise à l'échelle au survol */
     color: white;
 }
 
 .contact-button.active {
-    transform: translate(10px, 10px);                   /* style au clic */
+    transform: translate(10px, 10px); /* Déplace le bouton de contact de 10px vers la droite et 10px vers le bas au clic */
 }
 
 /* navigation des photos */
@@ -382,18 +384,20 @@ a {
     position: relative; /* Pour positionner les miniatures par rapport aux flèches */
 }
 
+/* Réference numero dans la modale*/
 .number-ref {
-    text-transform: uppercase; /* Référence préremplie dans la modale */
+    text-transform: uppercase; /* Transforme le texte en lettres majuscules */
 }
 
+/* Styles pour les miniatures des photos */
 .mini-thumbnail {
-    display: none;
+    display: none; /* Les miniatures sont initialement masquées */
     width: 81px;
     height: 71px;
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%); /* Centre la miniature horizontalement et verticalement dans son conteneur parent */
 }
 
 .arrow-thumbnail:hover .mini-thumbnail {
@@ -412,7 +416,7 @@ a {
     text-decoration: none; /* Pour enlever le soulignement des liens */
 }
 
-/* third-section avec les photos apparentées */
+/***********third-section avec les photos apparentées ***********/
 
 .titre{
     padding-left: 150px;
@@ -434,7 +438,7 @@ a {
 .thumbnail img {
     height: 561px;
     width: 624px;
-    object-fit: cover;
+    object-fit: cover; /* permet le controle des dimension et de la position des images dans le conteneur */
 }
 
 .all-photos {
@@ -443,6 +447,7 @@ a {
     justify-content: center;
     margin-bottom: 50px;
 }
+
 .all-photos-button {
     display: flex;
     align-items: center;
@@ -451,16 +456,16 @@ a {
     height: 50px;
     border-radius: 2px;
     background-color: #D8D8D8;
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease; /* Animation de transition au survol */
 }
 
 .all-photos-button:hover {
     background-color: black;
     font-weight: bold;
-    transform: scale(1.1);
+    transform: scale(1.1); /* Effet de mise à l'échelle au survol */
     color: white;
 }
-/* PAGE D'ACCUEIL */
+/*********** PAGE D'ACCUEIL ***********/
 
 .hero {
     width: 100%;
@@ -477,12 +482,12 @@ a {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
-    object-fit: contain;
+    transform: translate(-50%, -50%); /* Centre précisément l'image dans son conteneur parent */
+    object-fit: contain; /*Permet d'ajuter la taille de l'image pour la faire rentrer entiérement dans son conteneur tout en gardant son aspect*/
 }
 
 
-/* bouton de chargement de la page d'accueil*/
+/*********** bouton de chargement de la page d'accueil***********/
 
 .load-more-btn {
     display: flex;
@@ -505,11 +510,12 @@ a {
 #load-more-btn:hover {
     background-color:black;
     font-weight: bold;
-    transform: scale(1.1);
+    transform: scale(1.1); /* Effet de mise à l'échelle au survol */
     color: white;
 }
 
-/* Style des filtres et sélecteurs */
+/************ Style des filtres et sélecteurs ************/
+
 .filters-photos {
     display: flex;
     justify-content: space-between;
@@ -523,32 +529,88 @@ a {
 
 .filters select,
 #sort-by {
-    width: 260px;
-    height: 43px;
+    width: 260px ;
+    height: 43px ;
     border-radius: 8px;
-    border-color: #B8BBC2;
+    border-color: #B8BBC2 ;
     font-family: 'Poppins';
     font-weight: 600;
     text-transform: uppercase;
     cursor: pointer;
     border-width: 2px;
     background-color: #ffffff; /* Fond blanc */
+    border-top: 1px solid #B8BBC2;
 }
 
-/* Ajoutez ces styles pour l'effet de survol sur toutes les options des sélecteurs */
-.filters select option,
-#sort-by option {
-    background-color: #ffffff; /* Fond blanc initial */
-    color: #000000; /* Couleur du texte initial */
-    transition: background-color 0.3s, color 0.3s;
+.custom-select2-container .select2-selection--single {
+    height: 43px;
+    border-radius: 8px;
+    padding: 11px 18px;
 }
 
-/* Ajoutez ces styles pour l'effet de survol sur le sélecteur */
-.custom-select.hovered-select option {
-    background-color: #e00000; /* Fond au survol */
-    color: #ffffff; /* Couleur du texte au survol */
+.select2-container--default .select2-selection--single {
+    width: 260px!important;
+    height: 43px !important;
+    border-radius: 8px !important;
+    border-color: #B8BBC2 !important;
+    font-family: 'Poppins' !important;
+    font-weight: 600 !important;
+    text-transform: uppercase !important;
+    cursor: pointer !important;
+    border-width: 2px !important;
+    background-color: #ffffff !important; /* Fond blanc */
+    border-top: 1px solid #B8BBC2 !important;   
+} 
+
+/* Effet de survol et focus pour le sélecteur */
+.select2-selection:hover,
+.select2-selection:focus {
+    border: 1px blue solid !important;
 }
-/* LIGHTBOX */
+
+/* Styles pour la liste déroulante de Select2 */
+.select2-dropdown {
+    margin-top: 32px;
+}
+
+/* Styles pour le rendu du texte dans Select2 */
+.select2-selection__rendered {
+    padding-top: 6px;
+}
+
+/* Styles pour la flèche du sélecteur dans Select2 */
+.select2-selection__arrow {
+    padding-top: 15px;
+}
+
+/* Styles pour masquer les options désactivées dans Select2 */
+.select2-container--default .select2-results__option--disabled[aria-disabled="true"] {
+    visibility: hidden !important;
+}
+
+/* Ajoute une bordure supérieure au sélecteur ouvert */
+.select2-container--default.select2-container--open .select2-selection--single {
+    border-top: 1px solid #B8BBC2;
+}
+
+/* Ajoute les styles pour l'effet de survol sur toutes les options des sélecteurs */
+.select2-results__option {
+    background-color: #ffffff; /* Fond normal */
+    color: #000000; /* Couleur du texte normale */
+}
+
+/*Ajoute l'effet du hover rouge dans le select*/
+.select2-results__option--highlighted {
+    background-color: #e00000 !important; /* Fond au survol */
+    color: #ffffff !important; /* Couleur du texte au survol */
+}
+
+/*Supprime la zone de recherche du select*/
+.select2-search__field {
+    display: none !important;
+}
+
+/*********** LIGHTBOX ***********/
 
 .lightbox {
     position: fixed;
@@ -629,7 +691,7 @@ a {
  
  .thumbnail {
      position: relative;
-     overflow: hidden;
+     overflow: hidden; /* Masque tout contenu débordant de la miniature */
  }
    
  .thumbnail.is-hovered {
@@ -658,14 +720,14 @@ a {
      left: 0;
      width: 100%;
      height: 100%;
-     opacity: 0;
-     visibility: hidden;
-     transition: opacity 0.3s ease, visibility 0.3s ease;
+     opacity: 0;/* Opacité initiale à 0, la superposition est invisible */
+     visibility: hidden;/* Visibilité initiale à cachée */
+     transition: opacity 0.3s ease, visibility 0.3s ease;/* Effet de transition fluide pour l'opacité et la visibilité */
  }
    
  .thumbnail.is-hovered .thumbnail-hover {
-     opacity: 1;
-     visibility: visible;
+     opacity: 1;/* Opacité à 1 pour rendre la superposition visible */
+     visibility: visible;/* Visibilité à visible pour rendre la superposition visible */
  }
  
  .thumbnail-hover__eye, 
@@ -679,7 +741,7 @@ a {
  }
  
  .thumbnail-hover__expand img {
-     object-fit: contain;
+     object-fit: contain; /* L'image est ajustée pour être contenue dans sa boîte, préservant son rapport d'aspect */
  }
    
  .thumbnail-hover__expand {
@@ -708,8 +770,8 @@ a {
      font-style: normal;
      font-weight: 400;
      line-height: normal;
-     letter-spacing: 1.4px;
-     text-transform: uppercase;
+     letter-spacing: 1.4px;/* Ajoute un espacement de 1.4 pixels entre chaque lettre */
+     text-transform: uppercase; /* Convertit le texte en majuscules */
  }
    
  .thumbnail-hover__category {
@@ -726,8 +788,8 @@ a {
      font-style: normal;
      font-weight: 400;
      line-height: normal;
-     letter-spacing: 1.4px;
-     text-transform: uppercase;
+     letter-spacing: 1.4px;/* Ajoute un espacement de 1.4 pixels entre chaque lettre */
+     text-transform: uppercase; /* Convertit le texte en majuscules */
  }
  
  .thumbnail .thumbnail-hover__category a {
@@ -756,7 +818,7 @@ a {
 }
 
 
-/* RESPONSIVE */
+/*********** RESPONSIVE ************/
 
 
 /* media queris smartphone */
@@ -789,12 +851,12 @@ a {
     height: 253px;
     top: 72px;
 }
-/* PAGE A PROPOS*/
+/*********** PAGE A PROPOS***********/
 .post-title{
     padding-left: 50px;
 }
 
-/* MODAL DE CONTACT */
+/*********** MODAL DE CONTACT ***********/
 .modal {
     width: 286px;
     height: 583px;
@@ -820,7 +882,7 @@ a {
 
 
 
-/* CREATION MENU BURGER */
+/*********** CREATION MENU BURGER **********/
 
 .fixed {
     display: none;
@@ -840,7 +902,6 @@ a {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 20px;
     transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
 }
 .site-navigation{
@@ -864,6 +925,7 @@ a {
     display: flex; /* Afficher le menu au clic */
     opacity: 1;
     visibility: visible;
+    padding-right: 50px;
 }
 
 
@@ -906,7 +968,7 @@ a {
     transform: translateY(8px);
 }
 
-/* class active au clic du burger */
+/*********** class active au clic du burger ***********/
 
 .burger.active span {
     background-color: transparent
@@ -943,7 +1005,7 @@ a {
 }
 
 
-/* FILTRES et PHOTOS */
+/*********** FILTRES et PHOTOS ***********/
 
 .filters {
     display: flex;
@@ -991,7 +1053,7 @@ a {
     padding-right: 190px;
 }
 
-/* FOOTER */
+/*********** FOOTER ***********/
 .footer-menu {
     display: flex;
     flex-direction: column;
@@ -1004,7 +1066,7 @@ a {
     padding: 35px;
 }
 
-/* LIGHTBOX */
+/*********** LIGHTBOX ***********/
 
 .lightbox__container img {
     max-width: 40vh;
@@ -1021,7 +1083,7 @@ a {
     height : 50px;
 }
 
-/* SINGLE-POST */ 
+/*********** SINGLE-POST ***********/ 
 
 .single-post-container {
     overflow: initial;
@@ -1044,7 +1106,7 @@ a {
     padding-left: 170px;
 }
 
-.title, 
+
 .ref {
     margin-left: 55px;
 }
@@ -1062,7 +1124,7 @@ a {
         margin-left: 55px;
         gap: 10px;
         padding-left: 112px;
-    }
+}
 
 .titre{
     padding-left: 0px;
@@ -1074,9 +1136,7 @@ a {
 
 .third-section p {
         font-size: 18px;
-        font-weight: 400;
-    
-    
+        font-weight: 400;   
 }
 
 .double-photos {

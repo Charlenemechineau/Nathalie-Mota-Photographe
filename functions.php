@@ -47,10 +47,11 @@ add_action( 'after_setup_theme', 'mota_setup' );
 
 // Configuration de l'API REST personnalisée//
 function mota_rest_api_init() {
+    // Enregistrement de la route personnalisée "mota-custom/v1/photo"//
     register_rest_route( 'mota-custom/v1', '/photo', array(
-        'methods' => 'GET',
-        'callback' => 'mota_rest_api_photo_handler',
-        'permission_callback' => '__return_true',
+        'methods' => 'GET', // Méthodes HTTP autorisées pour cette route (GET dans ce cas)//
+        'callback' => 'mota_rest_api_photo_handler', // Fonction de rappel qui sera exécutée lors de l'appel à la route//
+        'permission_callback' => '__return_true', // Autorisation pour accéder à cette route (ici, tout le monde a accès)//
         'args' => array(
             'page' => array(
                 'validate_callback' => function($param, $request, $key) {
@@ -68,7 +69,7 @@ function mota_rest_api_init() {
                 }
             ),
             'order' => array(
-                'default' => 'DESC', // Valeur par défaut si non défini//
+                'default' => 'DESC', // Valeur par défaut si non défini
                 'validate_callback' => function($param, $request, $key) {
                     return in_array($param, array('ASC', 'DESC'));
                 }
@@ -129,10 +130,10 @@ function mota_rest_api_photo_handler( $request ) {
         }
     }
 
-    // Récupére le contenu du tampon de sortie
+    // Récupére le contenu du tampon de sortie//
     $output = ob_get_contents();//
 
-    // Viderle tampon de sortie//
+    // Vide le tampon de sortie//
     ob_end_clean();
 
     // Mettre à jour le numéro de page pour la prochaine requête//
@@ -145,3 +146,20 @@ function mota_rest_api_photo_handler( $request ) {
     // Retourne la réponse WP_REST avec le HTML généré et l'indicateur pour plus d'articles
     return new WP_REST_Response( array('html' => $output, 'post_next_page'=>$post_next_page), 200 );
 }
+
+// Ajout du plugin Select2
+function theme_enqueue_scripts() {
+    wp_enqueue_style(
+        'select2',  
+        'https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css'
+    );
+
+    wp_enqueue_script(
+        'select2',  
+        'https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js', 
+        array('jquery'), 
+        '4.1.0-rc.0', 
+        true 
+    );
+}
+add_action('wp_enqueue_scripts', 'theme_enqueue_scripts');

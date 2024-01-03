@@ -13,10 +13,10 @@
 
     <div class="lightbox__container">
       <!-- Conteneur pour les images de la lightbox -->
-      <?php while ($query_lightbox->have_posts()) : ?>
+      <?php while ($query_lightbox->have_posts()): ?>
         <!-- Boucle sur les articles dans $query_lightbox -->
         <?php $query_lightbox->the_post(); ?>
-        <div class="thumbnail-lightbox" data-id="<?php echo get_the_ID(); ?>" >
+        <div class="thumbnail-lightbox" data-id="<?php echo get_the_ID(); ?>">
           <!-- Div pour chaque image avec l'ID comme attribut de données -->
           <?php the_post_thumbnail("full"); ?>
           <!-- Affiche l'image en taille complète -->

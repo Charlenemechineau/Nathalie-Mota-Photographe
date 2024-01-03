@@ -70,9 +70,9 @@ function showPreviousImage() {
   showLightbox(previousImage.dataset.id);
 }
 
-// Définit la fonction pour attacher les événements de hover
+// Définit la fonction pour attacher les événements de hover//
 function addHoverEventListeners() {
-  // Écouteur d'événement pour gérer le survol des images
+  // Écouteur d'événement pour gérer le survol des images//
   var thumbnails = document.querySelectorAll('.thumbnail');
   thumbnails.forEach(thumbnail => {
     thumbnail.addEventListener('mouseenter', function() {
@@ -85,33 +85,44 @@ function addHoverEventListeners() {
   });
 }
 
-// Déclenchez la fonction pour attacher les événements de hover au chargement initial
+// Déclenche la fonction pour attacher les événements de hover au chargement initial//
 addHoverEventListeners();
 
-// Ajout d'un écouteur d'événement au chargement du DOM pour le bouton de fermeture
-document.addEventListener('DOMContentLoaded', function() {
-  var closeButton = document.querySelector('.lightbox__close');
+// Ajoute un écouteur d'événement au chargement du DOM pour le bouton de fermeture//
+document.addEventListener('DOMContentLoaded', function () {
+    // Sélection du bouton de fermeture dans la lightbox//
+    var closeButton = document.querySelector('.lightbox__close');
 
-  // Vérifiez si le bouton de fermeture existe avant d'ajouter l'écouteur d'événements
-  if (closeButton) {
-      closeButton.addEventListener('click', function() {
-          hideLightbox();
-      });
-  }
+    // Vérifie si le bouton de fermeture existe avant d'ajouter l'écouteur d'événements//
+    if (closeButton) {
+        // Ajoute d'un écouteur d'événement au clic sur le bouton de fermeture//
+        closeButton.addEventListener('click', function () {
+            // Appel de la fonction pour cacher la lightbox//
+            hideLightbox();
+        });
+    }
 
-  // Ajout d'un écouteur d'événement au chargement du DOM pour les boutons suivant et précédent
-  var nextButton = document.querySelector('.lightbox__next');
-  if (nextButton) {
-      nextButton.addEventListener('click', function() {
-          showNextImage();
-      });
-  }
+    // Sélectionne du bouton suivant dans la lightbox//
+    var nextButton = document.querySelector('.lightbox__next');
 
-  // Bouton précédent
-  var prevButton = document.querySelector('.lightbox__prev');
-  if (prevButton) {
-      prevButton.addEventListener('click', function() {
-          showPreviousImage();
-      });
-  }
+    // Vérification si le bouton suivant existe//
+    if (nextButton) {
+        // Ajoute d'un écouteur d'événement au clic sur le bouton suivant//
+        nextButton.addEventListener('click', function () {
+            // Appel de la fonction pour afficher l'image suivante dans la lightbox//
+            showNextImage();
+        });
+    }
+
+    // Sélectionn du bouton précédent dans la lightbox//
+    var prevButton = document.querySelector('.lightbox__prev');
+
+    // Vérification si le bouton précédent existe//
+    if (prevButton) {
+        // Ajoute un écouteur d'événement au clic sur le bouton précédent//
+        prevButton.addEventListener('click', function () {
+            // Appel de la fonction pour afficher l'image précédente dans la lightbox//
+            showPreviousImage();
+        });
+    }
 });
