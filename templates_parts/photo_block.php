@@ -7,14 +7,14 @@
             <!-- Icône œil avec lien vers la page de l'article -->
             <div class="thumbnail-hover__eye">
                 <a href="<?php echo esc_url(get_permalink()); ?>" class="thumbnail-hover__link">
-                    <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/img/Icon_eye.png"
-                        alt="icon-eye">
+                    <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/img/Icon_eye.png" alt="icon-eye">
+                       
                 </a>
             </div>
             <!-- Icône d'agrandissement -->
             <div class="thumbnail-hover__expand">
-                <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/img/Icon_fullscreen.png"
-                    alt="Agrandir">
+                <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/img/Icon_fullscreen.png" alt="agrandir">
+                    
             </div>
         </div>
         <!-- Informations supplémentaires au survol -->

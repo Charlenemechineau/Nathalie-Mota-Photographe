@@ -85,6 +85,16 @@ function addHoverEventListeners() {
   });
 }
 
+// écouteur d'événement pour ouvrir la lightbox au clic sur l'icône d'agrandissement
+var expandIcons = document.querySelectorAll('.thumbnail-hover__expand');
+expandIcons.forEach(expandIcon => {
+  expandIcon.addEventListener('click', function(event) {
+    event.stopPropagation(); // Empêcher la propagation de l'événement aux éléments parents
+    var photoId = expandIcon.closest('.thumbnail').dataset.id;
+    showLightbox(photoId);
+  });
+});
+
 // Déclenche la fonction pour attacher les événements de hover au chargement initial//
 addHoverEventListeners();
 
@@ -125,24 +135,4 @@ document.addEventListener('DOMContentLoaded', function () {
             showPreviousImage();
         });
     }
-
-    // Sélectionnez le lien avec la classe "lightbox-trigger"
-    var lightboxTrigger = document.querySelector('.lightbox-trigger');
-
-    // Vérifiez si le lien existe avant d'ajouter l'écouteur d'événements
-    if (lightboxTrigger) {
-        // Ajoutez un écouteur d'événements au clic sur le lien
-        lightboxTrigger.addEventListener('click', function (event) {
-            // Empêchez le comportement par défaut du lien
-            event.preventDefault();
-
-            // Récupère l'ID de l'image à afficher dans la lightbox
-            var photoId = lightboxTrigger.dataset.id;
-            
-            // Appelle la fonction pour afficher la lightbox avec l'image spécifique
-            showLightbox(photoId);
-        });
-    }
-    
-    console.log('Lightbox script loaded!');
 });
