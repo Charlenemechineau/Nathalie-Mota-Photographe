@@ -12,27 +12,26 @@ function register_my_menus() {
 // Appele la fonction pour enregistrer les menus//
 add_action('init', 'register_my_menus');
 
-// Fonction pour charger les styles et scripts du thème
+// Fonction pour charger les styles et scripts du thème//
 function theme_enqueue_styles() {
     // Enregistrement du style
     wp_enqueue_style('style', get_stylesheet_directory_uri() . '/style.css');
 
     // Enregistrement des scripts
-    wp_enqueue_script('jquery'); // Assurez-vous que jQuery est inclus en premier
-    wp_enqueue_script('script', get_stylesheet_directory_uri() . '/assets/js/scripts.js', array('jquery'), '1.0.0', true);
+    wp_enqueue_script('jquery'); // /jQuery est inclus en premier//
     wp_enqueue_script('lightbox', get_stylesheet_directory_uri() . '/lightbox.js', array(), '1.0.0', true);
-
-    // Vérifier si la page est la page d'accueil
+    wp_enqueue_script('script', get_stylesheet_directory_uri() . '/assets/js/scripts.js', array('jquery'), '1.0.0', true);
+    // Vérifie si la page est la page d'accueil//
     if (is_home()) {
-        // Enregistrement du script Ajax uniquement sur la page d'accueil
+        // Enregistrement du script Ajax uniquement sur la page d'accueil//
         wp_enqueue_script('mota-ajax-script', get_stylesheet_directory_uri() . '/ajax.js', array('jquery'), '1.0', true);
 
-        // Données à envoyer au script Ajax
+        // Données à envoyer au script Ajax//
         $data = array(
             'rest_url_custom_pagination_photo' => esc_url_raw(rest_url('mota-custom/v1/photo')),
         );
 
-        // Ajoute les données en ligne pour le script Ajax
+        // Ajoute les données en ligne pour le script Ajax//
         wp_add_inline_script('mota-ajax-script', sprintf('let ajax_object = %s;', wp_json_encode($data)), 'before');
     }
 }
@@ -40,7 +39,7 @@ add_action('wp_enqueue_scripts', 'theme_enqueue_styles');
 
 // Configuration du thème//
 function mota_setup() {
-    // Activer la prise en charge des images mises en avant (thumbnails)//
+    // Active la prise en charge des images mises en avant (thumbnails)//
     add_theme_support( 'post-thumbnails' );
 }
 add_action( 'after_setup_theme', 'mota_setup' );

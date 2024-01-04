@@ -167,7 +167,7 @@
                 <?php
                 // Boucle pour afficher les photos apparentées
                 while ($query->have_posts()) : $query->the_post(); ?>
-                    <div class="thumbnail">
+                    <div class="thumbnail lightbox-trigger" data-id="<?php echo get_the_ID(); ?>">
                         <?php
                         // Utilise le modèle de bloc photo pour afficher chaque miniature
                         get_template_part('templates_parts/photo_block');
