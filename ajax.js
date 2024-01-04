@@ -146,3 +146,10 @@ jQuery(document).ready(function($) {
     // Déclenchez la fonction pour attacher les événements de hover au chargement initial//
     addHoverEventListeners();
 });
+// Gestion du clic sur les images pour afficher la lightbox
+jQuery(document).on('click', '.thumbnail', function() {
+    // Récupère l'ID de l'image à afficher dans la lightbox
+    var photoId = jQuery(this).data('id');
+    // Appelle la fonction pour afficher la lightbox avec l'image spécifique
+    showLightbox(photoId);
+});
